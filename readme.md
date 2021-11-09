@@ -1,0 +1,1 @@
+# ProtonDB extension for Chrome
