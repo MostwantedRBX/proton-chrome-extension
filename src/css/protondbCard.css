@@ -1,80 +1,86 @@
-
 .proton_rating_div {
-    position: relative;
-    float: left;
-    margin-top: auto;
-    margin-right: 10px;
-    margin-left: 2px;
-    align-content: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 6px;
-    border-radius: 2px;
+  position: relative;
+  float: left;
+  margin-top: auto;
+  margin-right: 10px;
+  margin-left: 2px;
+  align-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  border-radius: 2px;
 }
 
 .proton_rating_link {
-    position: relative;
-    font-size: large;
-    font-weight:100;
-    color: black;
+  position: relative;
+  font-size: large;
+  font-weight: 100;
+  color: black;
 }
 
 .proton_rating_link:hover {
-    color: black;
+  color: black;
 }
 
 .proton_platinum {
-    background:rgb(180, 199, 220);
-    transition: 0.3s;
+  background: rgb(180, 199, 220);
+  transition: 0.3s;
 }
 
 .proton_platinum:hover {
-    background:rgb(147, 163, 182);
+  background: rgb(147, 163, 182);
 }
 
 .proton_gold {
-    background: rgb(207, 181, 59);
-    transition: 0.3s;
+  background: rgb(207, 181, 59);
+  transition: 0.3s;
 }
 
 .proton_gold:hover {
-    background: rgb(170, 148, 49);
+  background: rgb(170, 148, 49);
 }
 
 .proton_silver {
-    background: rgb(192, 192, 192);
-    transition: 0.3s;
+  background: rgb(192, 192, 192);
+  transition: 0.3s;
 }
 
 .proton_silver:hover {
-    background: rgb(158, 158, 158);
+  background: rgb(158, 158, 158);
 }
 
 .proton_bronze {
-    background: rgb(205, 127, 50);
-    transition: 0.3s;
+  background: rgb(205, 127, 50);
+  transition: 0.3s;
 }
 
 .proton_bronze:hover {
-    background: rgb(163, 103, 42);
+  background: rgb(163, 103, 42);
 }
 
 .proton_borked {
-    background: red;
-    transition: 0.3s;
+  background: red;
+  transition: 0.3s;
 }
 
 .proton_borked:hover {
-    background: rgb(201, 0, 0);
+  background: rgb(201, 0, 0);
 }
 
 .proton_pending {
-    background: grey;
-    transition: 0.3s;
+  background: grey;
+  transition: 0.3s;
 }
 
-
 .proton_pending:hover {
-    background: rgb(99, 99, 99);
+  background: rgb(99, 99, 99);
+}
+
+.proton_native {
+  background: rgb(37, 182, 23);
+  transition: 0.3s;
+}
+.proton_native:hover {
+  background: rgb(25, 138, 17);
 }
