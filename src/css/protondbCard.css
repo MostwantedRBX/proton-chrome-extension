@@ -24,64 +24,65 @@
 }
 
 .proton_platinum {
-    background: rgb(180, 199, 220);
-    transition: 0.3s;
+  background: rgb(180, 199, 220);
+  transition: 0.1s;
 }
 
 .proton_platinum:hover {
-    background: rgb(195, 216, 241);
+  filter: brightness(110%);
 }
 
 .proton_gold {
   background: rgb(207, 181, 59);
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .proton_gold:hover {
-    background: rgb(255, 221, 69);
+  filter: brightness(110%);
 }
 
 .proton_silver {
   background: rgb(192, 192, 192);
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .proton_silver:hover {
-    background: rgb(231, 231, 231);
+  filter: brightness(110%);
 }
 
 .proton_bronze {
     background: rgb(231, 143, 54);
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 .proton_bronze:hover {
-    background: rgb(226, 141, 57);
+  filter: brightness(110%);
 }
 
 .proton_borked {
     background: rgb(204, 0, 0);
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 .proton_borked:hover {
-    background: rgb(255, 0, 0);
+  filter: brightness(110%);
 }
 
 .proton_pending {
   background: grey;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .proton_pending:hover {
-    background: rgb(158, 158, 158);
+  filter: brightness(110%);
 }
 
 .proton_native {
   background: linear-gradient( to right, #75b022 5%, #588a1b 95%);
+  transition: .1s;
 }
 
 .proton_native:hover {
-  background: linear-gradient( to right, #8fd829 5%, #75b022 95%);
+  filter: brightness(110%);
 }
 
