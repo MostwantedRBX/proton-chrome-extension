@@ -10,13 +10,14 @@ var isNative = checkNative(tabs);
 if(isNative){
     createProtonButton("native");
 }else{
-//  send app id to the listener in background.js > callback the createProtonButton with the results
+//  Send app id to the listener in background.js and callback the createProtonButton with the results
 chrome.runtime.sendMessage({
         contentScriptQuery: "queryProtonRating",
         appID: id }, 
         createProtonButton
         );
 }
+
 function createProtonButton(rating) {
     //  Create a div.
 
@@ -27,7 +28,7 @@ function createProtonButton(rating) {
     var pageLink = document.createElement("a");
     pageLink.className = "proton_rating_link";
     pageLink.href = protonAppLink;
-    pageLink.text = "Proton: " + rating[0].toUpperCase()+rating.substring(1);
+    pageLink.text = (rating === "native" ? rating[0].toUpperCase()+rating.substring(1) : "Proton: " + rating[0].toUpperCase()+rating.substring(1));
     pageLink.target = "_blank";
     cont.appendChild(pageLink);
     
