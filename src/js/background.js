@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(
           //    link to game ratings on proton
           var href = "https://www.protondb.com/api/v1/reports/summaries/" + req.appID + ".json";
 
-          //    Fetch the body from the appid's protondb page > if response if 404, that means its not been reviewed enough > return the rating field in the json
+          //    Fetch the body from the appid's protondb page then if response if 404, that means its not been reviewed enough then return the rating field in the json
           fetch(href)
               .then(res => {
                   if (!res.ok) {

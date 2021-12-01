@@ -7,15 +7,19 @@ NOTE: It does not currently say whether it is native or not. That will be added 
 ### The proton rankings are as such:
 
 ![Native Badge](ss/native.png)
-![](ss/platinum.png)
 
-![](ss/gold.png)
+![Platinum Badge](ss/platinum.png)
 
-### . . . silver and bronze
+![Gold Badge](ss/gold.png)
 
-![](ss/borked.png)
+![Silver Badge](ss/silver.png)
 
-### . . . pending
+![Bronze Badge](ss/bronze.png)
+
+![Borked Badge](ss/borked.png)
+
+![Pending Badge](ss/pending.png)
+
 
 ## The rating shows up on the Steam game's store page.
 
