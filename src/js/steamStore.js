@@ -1,16 +1,22 @@
 "use strict";
 
-
 var id = window.location.href.slice(35).split("/")[0];
 var protonAppLink = "https://www.protondb.com/app/" + id;
 
+// Check if the app runs natively
+var tabs = document.getElementsByClassName("sysreq_tab");
+var isNative = checkNative(tabs);
+
+if(isNative){
+    createProtonButton("native");
+}else{
 //  send app id to the listener in background.js > callback the createProtonButton with the results
 chrome.runtime.sendMessage({
         contentScriptQuery: "queryProtonRating",
         appID: id }, 
         createProtonButton
         );
-
+}
 function createProtonButton(rating) {
     //  Create a div.
 
@@ -30,4 +36,15 @@ function createProtonButton(rating) {
     if (otherSiteButton) {
         otherSiteButton[0].append(cont);
     }
+}
+
+// Check if system requirements tabs include a linux tab
+function checkNative(sysreq_tabs){
+    for(let i = 0; i < sysreq_tabs.length; i++){
+        var tab = sysreq_tabs.item(i);
+        if(tab.getAttribute("data-os") == "linux"){
+            return true;
+        }        
+    }
+    return false;
 }
