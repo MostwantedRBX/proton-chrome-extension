@@ -1,9 +1,6 @@
 # ProtonDB extension for Chrome
 
 This extension fetches the proton rating from protondb and displays it & a link to the protondb page nicely by the title of the game. This lets you know how well the game will preform utilizing steams proton layer.
-
-NOTE: It does not currently say whether it is native or not. That will be added later.
-
 ### The proton rankings are as such:
 
 ![Native Badge](ss/native.png)
@@ -24,3 +21,13 @@ NOTE: It does not currently say whether it is native or not. That will be added 
 ## The rating shows up on the Steam game's store page.
 
 ![Proton extension on steam page](ss/ss1.png)
+
+<br />
+
+## To Install:
+
+ - Download / clone the source code with `git clone https://github.com/MostwantedRBX/proton-chrome-extension.git`
+ - Go to the url `chrome://extensions`
+ - Enable "Developer Mode" in the top right of the screen
+ - Select "Load Unpacked" in the top left of the screen and point it to the src folder in the cloned repository.
+ ![Enable Dev mode and select src folder](ss/load_unpacked.png)
