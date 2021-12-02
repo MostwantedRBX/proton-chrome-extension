@@ -51,8 +51,8 @@
 }
 
 .proton_bronze {
-    background: rgb(231, 143, 54);
-    transition: 0.1s;
+  background: rgb(231, 143, 54);
+  transition: 0.1s;
 }
 
 .proton_bronze:hover {
@@ -60,8 +60,8 @@
 }
 
 .proton_borked {
-    background: rgb(204, 0, 0);
-    transition: 0.1s;
+  background: rgb(204, 0, 0);
+  transition: 0.1s;
 }
 
 .proton_borked:hover {
@@ -78,11 +78,24 @@
 }
 
 .proton_native {
-  background: linear-gradient( to right, #75b022 5%, #588a1b 95%);
-  transition: .1s;
+  background: linear-gradient(to right, #75b022 5%, #588a1b 95%);
+  transition: 0.1s;
 }
 
 .proton_native:hover {
   filter: brightness(110%);
 }
 
+.proton_rating_search {
+  float: right !important;
+  right: 0;
+  top: 0;
+  padding: 0px 3px !important;
+  margin: 0 !important;
+  margin-left: 5px !important;
+}
+.proton_rating_link_search {
+  font-weight: 300 !important;
+  font-size: 12px; /* same as steam*/
+  line-height: 45px;
+}

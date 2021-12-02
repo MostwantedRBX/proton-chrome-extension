@@ -14,29 +14,13 @@ if(isNative){
 chrome.runtime.sendMessage({
         contentScriptQuery: "queryProtonRating",
         appID: id }, 
-        createProtonButton
+        run
         );
 }
-
-function createProtonButton(rating) {
-    //  Create a div.
-
-    var cont = document.createElement("div");
-    cont.className = "proton_rating_div proton_"+ rating;
-
-    //  Create an anchor link, set the href to the protondb page, add it to the container div.
-    var pageLink = document.createElement("a");
-    pageLink.className = "proton_rating_link";
-    pageLink.href = protonAppLink;
-    pageLink.text = (rating === "native" ? rating[0].toUpperCase()+rating.substring(1) : "Proton: " + rating[0].toUpperCase()+rating.substring(1));
-    pageLink.target = "_blank";
-    cont.appendChild(pageLink);
-    
-    //  Get the "Community Hub" button on the steam page and append the new div to the parent of the button.
-    var otherSiteButton = document.getElementsByClassName("apphub_OtherSiteInfo");
-    if (otherSiteButton) {
-        otherSiteButton[0].append(cont);
-    }
+function run(res){
+    var rating = res[0];
+    var button = createProtonButton(rating);
+    addButtonToClass(button, "apphub_OtherSiteInfo");
 }
 
 // Check if system requirements tabs include a linux tab
@@ -49,3 +33,30 @@ function checkNative(sysreq_tabs){
     }
     return false;
 }
+
+// Shared Functions
+function createProtonButton(rating) {
+    //  Create a div.
+    var cont = document.createElement("div");
+    cont.className = "proton_rating_div proton_"+ rating;
+
+    //  Create an anchor link, set the href to the protondb page, add it to the container div.
+    var pageLink = document.createElement("a");
+    pageLink.className = "proton_rating_link";
+    pageLink.href = protonAppLink;
+    pageLink.text = (rating === "native" ? rating[0].toUpperCase()+rating.substring(1) : "Proton: " + rating[0].toUpperCase()+rating.substring(1));
+    pageLink.target = "_blank";
+    cont.appendChild(pageLink);
+    return cont;
+  
+}
+
+function addButtonToClass(button, className){
+      //  Get the "Community Hub" button on the steam page and append the new div to the parent of the button.
+      var otherSiteButton = document.getElementsByClassName(className);
+      if (otherSiteButton) {
+          otherSiteButton[0].append(button);
+      }
+}
+
+
