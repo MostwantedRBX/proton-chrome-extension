@@ -7,9 +7,7 @@ var protonAppLink = "https://www.protondb.com/app/" + id;
 var tabs = document.getElementsByClassName("sysreq_tab");
 var isNative = checkNative(tabs);
 
-if(isNative){
-    createProtonButton("native");
-}else{
+
 //  Send app id to the listener in background.js and callback the createProtonButton with the results
 chrome.runtime.sendMessage({
         contentScriptQuery: "queryProtonRating",
@@ -22,6 +20,9 @@ function run(res){
     var button = createProtonButton(rating);
     addButtonToClass(button, "apphub_OtherSiteInfo");
 }
+    
+//  If app is native, create a button for that too
+if(isNative) createProtonButton("native");
 
 // Check if system requirements tabs include a linux tab
 function checkNative(sysreq_tabs){
