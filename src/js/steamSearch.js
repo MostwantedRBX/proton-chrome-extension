@@ -67,7 +67,7 @@ function createProtonButton(rating, appId) {
 
     pageLink.href = protonAppLink;
     
-    pageLink.text = "";
+    pageLink.text = rating[0].toUpperCase() + rating.substring(1);
     pageLink.target = "_blank";
     cont.appendChild(pageLink);
     buttons.delete(appId);
