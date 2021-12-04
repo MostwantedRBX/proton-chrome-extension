@@ -23,7 +23,10 @@ function run(res) {
 }
 
 //  If app is native, create a button for that too
-if (isNative) createProtonButton("native");
+if (isNative) {
+    var nativeButton = createProtonButton("native");
+    addButtonToClass(nativeButton, "apphub_OtherSiteInfo");
+}
 
 // Check if system requirements tabs include a linux tab
 function checkNative(sysreq_tabs) {
