@@ -94,10 +94,10 @@
     margin: 0 !important;
     margin-left: 0.5rem !important;
     position: absolute;
-    -webkit-transition: width 0.4s ease-in-out;
-    -moz-transition: width 0.4s ease-in-out;
-    -o-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+    -webkit-transition: width 0.2s ease-in-out;
+    -moz-transition: width 0.2s ease-in-out;
+    -o-transition: width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
     overflow: hidden;
     width: 0rem !important;
     text-align: center;
@@ -105,11 +105,11 @@
 }
 
 .proton_rating_search:hover {
-    -webkit-transition: width 0.4s ease-in-out;
-    -moz-transition: width 0.4s ease-in-out;
-    -o-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    width: 2rem!important;
+    -webkit-transition: width 0.2s ease-in-out;
+    -moz-transition: width 0.2s ease-in-out;
+    -o-transition: width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
+    width: 20%!important;
     text-indent: 0vw !important;
 }
 
@@ -118,8 +118,8 @@
 }
 
 .proton_rating_link_search {
-    font-weight: 300 !important;
-    font-size: 12px;
+    font-size: large;
+    font-weight: 100;
     /* same as steam*/
     line-height: 45px;
 }
