@@ -5,9 +5,8 @@
     "description": "Adds the ProtonDB rating to games in the Steam store so you get an idea of how it will run before you buy it!",
     
     "permissions": [
-        "https://www.protondb.com/*",
-        "storage"
-    ],
+        "https://www.protondb.com/*"
+        ],
 
     "background": {
         "service_worker": "js/background.js"

@@ -25,7 +25,10 @@ This extension fetches the proton rating from protondb and displays it & a link 
 <br />
 
 ## To Install:
-
+### Chrome Webstore
+ - Go to the [extension's store page](https://chrome.google.com/webstore/detail/protondb-for-steam/ngonfifpkpeefnhelnfdkficaiihklid)
+ - Press the button 'add to chrome'. 
+### Manually
  - Download / clone the source code with `git clone https://github.com/MostwantedRBX/proton-chrome-extension.git`
  - Go to the url `chrome://extensions`
  - Enable "Developer Mode" in the top right of the screen
