@@ -28,6 +28,11 @@
             "matches": ["https://store.steampowered.com/search*"],
             "js": ["js/steamSearch.js"],
             "css": ["css/protondbCard.css"]
+        },
+        {
+            "matches": ["https://store.steampowered.com/"],
+            "js": ["js/steamStore.js"],
+            "css": ["css/protondbCard.css"]
         }
     ]
 }
