@@ -24,7 +24,13 @@
 }
 
 .proton_platinum {
-    background: rgb(180, 199, 220);
+    background: repeating-linear-gradient(
+        45deg,
+        rgb(0, 128, 0),
+        rgb(0, 128, 0) 7px,
+        rgb(180, 199, 220) 7px,
+        rgb(180, 199, 220) 14px
+    );
     transition: 0.1s;
 }
 
