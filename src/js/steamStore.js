@@ -7,7 +7,6 @@ var protonAppLink = "https://www.protondb.com/app/" + id;
 var tabs = document.getElementsByClassName("sysreq_tab");
 var isNative = checkNative(tabs);
 
-
 //  Send app id to the listener in background.js and callback the createProtonButton with the results
 chrome.runtime.sendMessage({
         contentScriptQuery: "queryProtonRating",
@@ -63,3 +62,4 @@ function addButtonToClass(button, className) {
         otherSiteButton[0].append(button);
     }
 }
+

@@ -1,3 +1,5 @@
+@import "variables.css";
+
 .proton_rating_div {
     position: relative;
     float: left;
@@ -60,7 +62,7 @@
 }
 
 .proton_borked {
-    background: rgb(204, 0, 0);
+    background: var(--proton_borked);
     transition: 0.1s;
 }
 
@@ -122,4 +124,32 @@
     font-weight: 100;
     /* same as steam*/
     line-height: 45px;
+}
+
+/* Search bar */
+.search_bar_proton_badge{
+    font-size: 12px;
+    font-weight: 450;
+    border-radius: 5%;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.search_bar_proton_badge > a{
+    color: black;
+}
+
+.search_bar_proton_badge > a:hover{
+    color:black;
+    text-decoration: none;
+}
+
+.match_name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
 }
