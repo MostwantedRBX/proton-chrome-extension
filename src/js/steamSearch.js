@@ -1,13 +1,14 @@
 "use strict";
 
-var buttons = new Map(); // Map with appId as key and row number as value
+var rowsByAppId = new Map(); // Map with appId as key and row number as value
 
+// Add ratings to initially loaded DOM
 var searchRows = document.getElementById('search_resultsRows');
 for (var i = 0; i < searchRows.children.length; i++) {
     var appId = getId(i);
 
     // Store the row number in a map with appID as key
-    buttons.set(appId, i);
+    rowsByAppId.set(appId, i);
     //  Send app id to the listener in background.js and callback the createProtonButton with the results
     chrome.runtime.sendMessage({
         contentScriptQuery: "queryProtonRating",
@@ -49,46 +50,54 @@ function getRow(appId) {
 function run(res) {
     var rating = res[0];
     var appId = res[1];
-    var row = buttons.get(appId);
-    var button = createProtonButton(rating, appId);
-    addButtonToClass(button, "responsive_search_name_combined", row);
+    var row = rowsByAppId.get(appId);
+
+    if(row == null)
+        row = getRow(appId);
+   
+    var button = createProtonBadge(rating, appId);
+    addButtonToSearch(button, "search_name", row);
 }
 
 // Shared Functions
-// Create a proton button based on a rating and appId
-function createProtonButton(rating, appId) {
-    //  Create a div.
-    var cont = document.createElement("div");
-    cont.className = "proton_rating_div proton_rating_search col responsive_secondrow proton_" + rating;
+function createProtonBadge(rating, appId){
+    //  Create encompassing span element
+    var cont = document.createElement("span");
+    cont.className = "platform_img platform_proton platform_proton_" + rating.toLowerCase();
 
-    //  Create an anchor link, set the href to the protondb page, add it to the container div.
+    // Add link to the badge
     var pageLink = document.createElement("a");
-    pageLink.className = "proton_rating_link proton_rating_link_search";
-    var protonAppLink = "https://www.protondb.com/app/" + appId; // Link doesn't work in current result, as steam makes the entire row a link to the store-page
-
+    pageLink.className = "";
+    var protonAppLink = "https://www.protondb.com/app/" + appId;
     pageLink.href = protonAppLink;
-
-    pageLink.text = rating[0].toUpperCase() + rating.substring(1);
+    pageLink.title = "Proton Rating: " + rating[0].toUpperCase() + rating.substring(1);
+    pageLink.text = rating.toUpperCase();
     pageLink.target = "_blank";
     cont.appendChild(pageLink);
-    buttons.delete(appId);
+    rowsByAppId.delete(appId);
     return cont;
-
 }
 
-// Add the html button to a class
-function addButtonToClass(button, className, count) {
+// Add rating on search page
+function addButtonToSearch(button, className, count) {
     //  Get the "Community Hub" button on the steam page and append the new div to the parent of the button.
     var otherSiteButton = document.getElementsByClassName(className)[count];
     if (otherSiteButton) {
-        otherSiteButton.append(button);
+        var parentDiv = otherSiteButton.getElementsByTagName("div")[0]
+
+        // Only add proton rating if none is yet added
+        if(parentDiv.getElementsByClassName("platform_proton").length == 0)
+            parentDiv.append(button);
     }
 }
 
 // Add a search result rating to the DOM 
 function processItem(item) {
     var appId = item.dataset["dsAppid"];
-    buttons.set(appId, getRow(appId));
+    if(appId == null){
+        appId = item.dataset.dsBundleid;
+    }
+    rowsByAppId.set(appId, getRow(appId));
     chrome.runtime.sendMessage({
         contentScriptQuery: "queryProtonRating",
         appID: appId

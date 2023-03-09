@@ -1,3 +1,5 @@
+@import "variables.css";
+
 .proton_rating_div {
     position: relative;
     float: left;
@@ -24,7 +26,7 @@
 }
 
 .proton_platinum {
-    background: rgb(180, 199, 220);
+    background: var(--proton_platinum);
     transition: 0.1s;
 }
 
@@ -33,7 +35,7 @@
 }
 
 .proton_gold {
-    background: rgb(207, 181, 59);
+    background: var(--proton_gold);
     transition: 0.1s;
 }
 
@@ -42,7 +44,7 @@
 }
 
 .proton_silver {
-    background: rgb(192, 192, 192);
+    background: var(--proton_silver);
     transition: 0.1s;
 }
 
@@ -51,7 +53,7 @@
 }
 
 .proton_bronze {
-    background: rgb(231, 143, 54);
+    background: var(--proton_bronze);
     transition: 0.1s;
 }
 
@@ -60,7 +62,7 @@
 }
 
 .proton_borked {
-    background: rgb(204, 0, 0);
+    background: var(--proton_native);
     transition: 0.1s;
 }
 
@@ -78,7 +80,7 @@
 }
 
 .proton_native {
-    background: linear-gradient(to right, #75b022 5%, #588a1b 95%);
+    background: var(--proton_native);
     transition: 0.1s;
 }
 
@@ -86,40 +88,3 @@
     filter: brightness(110%);
 }
 
-.proton_rating_search {
-    float: right !important;
-    right: 0;
-    top: 0;
-    padding: 0px 0.15rem !important;
-    margin: 0 !important;
-    margin-left: 0.5rem !important;
-    position: absolute;
-    -webkit-transition: width 0.2s ease-in-out;
-    -moz-transition: width 0.2s ease-in-out;
-    -o-transition: width 0.2s ease-in-out;
-    transition: width 0.2s ease-in-out;
-    overflow: hidden;
-    width: 0rem !important;
-    text-align: center;
-    text-indent: 100rem !important;
-}
-
-.proton_rating_search:hover {
-    -webkit-transition: width 0.2s ease-in-out;
-    -moz-transition: width 0.2s ease-in-out;
-    -o-transition: width 0.2s ease-in-out;
-    transition: width 0.2s ease-in-out;
-    width: 20%!important;
-    text-indent: 0vw !important;
-}
-
-#global_hover {
-    left: 73rem!important;
-}
-
-.proton_rating_link_search {
-    font-size: large;
-    font-weight: 100;
-    /* same as steam*/
-    line-height: 45px;
-}

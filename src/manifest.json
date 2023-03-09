@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "version": "1.5",
+  "version": "1.6",
   "name": "ProtonDB for Steam",
   "description": "Adds the ProtonDB rating to games in the Steam store so you get an idea of how it will run before you buy it!",
 
@@ -25,7 +25,7 @@
     {
       "matches": ["https://store.steampowered.com/search*"],
       "js": ["js/steamSearch.js"],
-      "css": ["css/protondbCard.css"]
+      "css": ["css/protondbCard.css", "css/searchPage.css", "css/variables.css"]
     }
   ]
 }

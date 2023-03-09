@@ -1,0 +1,39 @@
+@import "variables.css";
+
+/* Search Page */
+.platform_img.platform_proton{
+    font-weight: bold;
+    color: white;
+    opacity: 1 !important;
+    position: relative;
+    top: -5px;
+}
+.platform_img.platform_proton_pending > a{
+    color: var(--proton_pending);
+    opacity: 0.3 !important;
+}
+
+.platform_img.platform_proton_gold > a{
+    color:var(--proton_gold);
+}
+
+.platform_img.platform_proton_silver > a{
+    color: var(--proton_silver);
+}
+
+.platform_img.platform_proton_bronze > a{
+    color: var(--proton_bronze);
+}
+
+.platform_img.platform_proton_native > a{
+    color: var(--proton_native);
+}
+
+.platform_img.platform_proton_borked > a{
+    color: var(--proton_borked);
+}
+
+.platform_img.platform_proton_platinum > a{
+    color: var(--proton_platinum);
+    text-shadow: 0 0 2px var(--proton_platinum);
+}
