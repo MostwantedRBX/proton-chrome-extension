@@ -20,7 +20,7 @@
     {
       "matches": ["https://store.steampowered.com/app/*"],
       "js": ["js/steamStore.js"],
-      "css": ["css/protondbCard.css"]
+      "css": ["css/protondbCard.css", "css/variables.css"]
     },
     {
       "matches": ["https://store.steampowered.com/search*"],
