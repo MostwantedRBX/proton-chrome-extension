@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "app_version": 1.5,
+    "app_version": "1.5.3",
     "app_name": "ProtonDB for Steam",
     "app_description": "Adds the ProtonDB rating to games in the Steam store so you get an idea of how it will run before you buy it!",
     "host_permissions": ["https://www.protondb.com/*"],
