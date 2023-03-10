@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "app_version": 1.5,
+    "app_name": "ProtonDB for Steam",
+    "app_description": "Adds the ProtonDB rating to games in the Steam store so you get an idea of how it will run before you buy it!",
+    "host_permissions": ["https://www.protondb.com/*"],
+    "background_script" : "js/background.js",
+    "icons": {
+      "16": "/icons/proton_16.png",
+      "32": "/icons/proton_32.png",
+      "48": "/icons/proton_48.png",
+      "128": "/icons/proton_128.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://store.steampowered.com/app/*"],
+        "js": ["js/steamStore.js"],
+        "css": ["css/protondbCard.css"]
+      },
+      {
+        "matches": ["https://store.steampowered.com/search*"],
+        "js": ["js/steamSearch.js"],
+        "css": ["css/protondbCard.css"]
+      }
+    ],
+    "firefox": {
+        "id": "{09d1226f-0dd0-4ad7-8a0f-cca316ea271e}",
+        "strict_min_version": "101.0"
+    }
+
+}
+  
