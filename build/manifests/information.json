@@ -23,7 +23,7 @@
       {
         "matches": ["https://store.steampowered.com/*"],
         "js": ["js/steamGeneral.js"],
-        "css": ["css/protondbCard.css", "variables.css"]
+        "css": ["css/protondbCard.css", "css/variables.css"]
       }
     ],
     "firefox": {
