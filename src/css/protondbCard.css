@@ -104,6 +104,7 @@
     width: 0rem !important;
     text-align: center;
     text-indent: 100rem !important;
+    z-index: 10000;
 }
 
 .proton_rating_search:hover {
@@ -113,10 +114,6 @@
     transition: width 0.2s ease-in-out;
     width: 20%!important;
     text-indent: 0vw !important;
-}
-
-#global_hover {
-    left: 73rem!important;
 }
 
 .proton_rating_link_search {
