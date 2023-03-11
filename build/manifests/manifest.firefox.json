@@ -4,6 +4,7 @@
     "name": "{app_name}",
     "description": "{app_description}",
     "host_permissions": {host_permissions},
+    "permissions": {host_permissions},
     "background": {
         "scripts": ["{background_script}"]
     },
