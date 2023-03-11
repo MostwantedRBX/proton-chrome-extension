@@ -1,0 +1,12 @@
+{
+    "manifest_version": {manifest_version},
+    "version": "{app_version}",
+    "name": "{app_name}",
+    "description": "{app_description}",
+    "host_permissions": {host_permissions},
+    "background": {
+        "service_worker": "{background_script}"
+    },
+    "icons": {icons},
+    "content_scripts": {content_scripts}
+}
