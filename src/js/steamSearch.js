@@ -99,12 +99,12 @@ document.addEventListener('DOMNodeInserted', onPageChange);
 
 // Runs when the DOM gets new nodes
 function onPageChange(event) {
-    if (event.srcElement == null || event.srcElement.classList == null) {
+    if (event.target == null || event.target.classList == null) {
         return;
     }
-    if (event.srcElement.classList[0] === "search_result_row") {
+    if (event.target.classList[0] === "search_result_row") {
         // Regular updated rows -- These are the rows that match when the user scrolls downwards
-        let newItem = event.srcElement;
+        let newItem = event.target;
         processItem(newItem);
     }
     else if (event.relatedNode != null && event.relatedNode.classList[0] === "search_results") {

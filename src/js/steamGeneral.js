@@ -6,11 +6,11 @@ search_contents.addEventListener('DOMNodeInserted', onPageChange);
 
 // Runs when the DOM gets new nodes
 function onPageChange(event) {
-    if (event.srcElement == null || event.srcElement.classList == null) {
+    if (event.target == null || event.target.classList == null) {
         return;
     }
-    if (event.srcElement.classList[0] === "match") {
-        let newItem = event.srcElement;
+    if (event.target.classList[0] === "match") {
+        let newItem = event.target;
         let id = newItem.dataset.dsAppid;
             chrome.runtime.sendMessage({
                 contentScriptQuery: "queryProtonRating",
