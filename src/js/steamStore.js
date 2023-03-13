@@ -1,11 +1,11 @@
 "use strict";
 
-var id = window.location.href.slice(35).split("/")[0];
-var protonAppLink = "https://www.protondb.com/app/" + id;
+const id = window.location.href.slice(35).split("/")[0];
+const protonAppLink = "https://www.protondb.com/app/" + id;
 
 // Check if the app runs natively
-var tabs = document.getElementsByClassName("sysreq_tab");
-var isNative = checkNative(tabs);
+let tabs = document.getElementsByClassName("sysreq_tab");
+let isNative = checkNative(tabs);
 
 //  Send app id to the listener in background.js and callback the createProtonButton with the results
 chrome.runtime.sendMessage({
@@ -16,22 +16,22 @@ chrome.runtime.sendMessage({
 );
 
 function run(res) {
-    var rating = res[0];
-    var button = createProtonButton(rating);
+    const rating = res[0];
+    let button = createProtonButton(rating);
     addButtonToClass(button, "apphub_OtherSiteInfo");
 }
 
 //  If app is native, create a button for that too
 if (isNative) {
-    var nativeButton = createProtonButton("native");
+    let nativeButton = createProtonButton("native");
     addButtonToClass(nativeButton, "apphub_OtherSiteInfo");
 }
 
 // Check if system requirements tabs include a linux tab
 function checkNative(sysreq_tabs) {
     for (let i = 0; i < sysreq_tabs.length; i++) {
-        var tab = sysreq_tabs.item(i);
-        if (tab.getAttribute("data-os") == "linux") {
+        let tab = sysreq_tabs.item(i);
+        if (tab.getAttribute("data-os") === "linux") {
             return true;
         }
     }
@@ -41,11 +41,11 @@ function checkNative(sysreq_tabs) {
 // Shared Functions
 function createProtonButton(rating) {
     //  Create a div.
-    var cont = document.createElement("div");
+    let cont = document.createElement("div");
     cont.className = "proton_rating_div proton_" + rating;
 
     //  Create an anchor link, set the href to the protondb page, add it to the container div.
-    var pageLink = document.createElement("a");
+    let pageLink = document.createElement("a");
     pageLink.className = "proton_rating_link";
     pageLink.href = protonAppLink;
     pageLink.text = (rating === "native" ? rating[0].toUpperCase() + rating.substring(1) : "Proton: " + rating[0].toUpperCase() + rating.substring(1));
@@ -57,7 +57,7 @@ function createProtonButton(rating) {
 
 function addButtonToClass(button, className) {
     //  Get the "Community Hub" button on the steam page and append the new div to the parent of the button.
-    var otherSiteButton = document.getElementsByClassName(className);
+    let otherSiteButton = document.getElementsByClassName(className);
     if (otherSiteButton) {
         otherSiteButton[0].append(button);
     }
