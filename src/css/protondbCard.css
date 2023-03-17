@@ -150,3 +150,20 @@
     align-items: center;
     gap: 5px;
 }
+
+/* SteamDeck */
+.proton_sd_0{
+    background-color: gray;
+}
+
+.proton_sd_1{
+    background-color: red;
+}
+
+.proton_sd_2{
+    background-color: orange;
+}
+
+.proton_sd_3{
+    background-color: lime;
+}
