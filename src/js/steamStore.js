@@ -15,9 +15,22 @@ chrome.runtime.sendMessage({
     run
 );
 
+chrome.runtime.sendMessage({
+    contentScriptQuery: "querySteamDeckRating",
+    appID: id
+},
+runSD
+);
+
 function run(res) {
     var rating = res[0];
     var button = createProtonButton(rating);
+    addButtonToClass(button, "apphub_OtherSiteInfo");
+}
+
+function runSD(res) {
+    var rating = res[0];
+    var button = createProtonSDButton(rating);
     addButtonToClass(button, "apphub_OtherSiteInfo");
 }
 
@@ -49,6 +62,25 @@ function createProtonButton(rating) {
     pageLink.className = "proton_rating_link";
     pageLink.href = protonAppLink;
     pageLink.text = (rating === "native" ? rating[0].toUpperCase() + rating.substring(1) : "Proton: " + rating[0].toUpperCase() + rating.substring(1));
+    pageLink.target = "_blank";
+    cont.appendChild(pageLink);
+    return cont;
+
+}
+
+
+// Shared Functions
+let ratings = ["Unknown", "Unplayable", "Playable", "Verified"]; // Steam deck ratings
+function createProtonSDButton(rating) {
+    //  Create a div.
+    var cont = document.createElement("div");
+    cont.className = "proton_rating_div proton_sd_" + rating;
+
+    //  Create an anchor link, set the href to the protondb page, add it to the container div.
+    var pageLink = document.createElement("a");
+    pageLink.className = "proton_rating_link";
+    pageLink.href = protonAppLink;
+    pageLink.text = "Steam Deck: " + ratings[rating];
     pageLink.target = "_blank";
     cont.appendChild(pageLink);
     return cont;

@@ -21,6 +21,22 @@ chrome.runtime.onMessage.addListener(
               .then(data => {sendRes([data.tier, req.appID]);}).catch(error => console.log(error))
 
           return true;
+      }else if(req.contentScriptQuery == "querySteamDeckRating"){
+        var href = "https://www.protondb.com/proxy/steam/deck-verified?nAppID=" + req.appID;
+        fetch(href)
+              .then(res => {
+                  if (!res.ok) {
+                      if (res.status == 404) {
+                          sendRes([0, req.appID]);
+                          return true;
+                      }
+                      throw Error(res.status);
+                  }
+                  return res.json();
+              })
+              .then(data => {sendRes([data.results.resolved_category, req.appID]);}).catch(error => console.log(error))
+
+          return true;
       }
   }
 );
