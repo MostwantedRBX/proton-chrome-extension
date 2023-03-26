@@ -1,9 +1,9 @@
 :root{
     --proton_gold: rgb(207, 181, 59);
-    --proton_platinum: rgb(180, 199, 220);
+    --proton_platinum: rgb(123, 177, 232);
     --proton_silver: rgb(192, 192, 192);
     --proton_bronze: rgb(231, 143, 54);
     --proton_borked: rgb(204, 0, 0);
-    --proton_pending: grey;
+    --proton_pending: #ff9595;
     --proton_native:  linear-gradient(to right, #75b022 5%, #588a1b 95%);
 }
