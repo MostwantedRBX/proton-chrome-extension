@@ -24,3 +24,25 @@ chrome.runtime.onMessage.addListener(
       }
   }
 );
+/// This function checks if the current browser is firefox and if so, opens a special permissions tab requesting permissions.
+/// Firefox has stopped supporting 'required' permissions since v3 and is real picky with asking the user about those permissions.
+/// This opens a page explaining the permissions and asking for a button click
+function onStartup(){
+    if (typeof browser !== 'undefined' && browser.runtime.getBrowserInfo) {
+        if(browser.runtime.getBrowserInfo().then(async function(res){
+            console.log(res);
+            if(res.name == "Firefox"){
+                browser.permissions.contains({origins: ['https://www.protondb.com/*', 'https://store.steampowered.com/*']}).then(async function(result) {
+                    if(!result){
+                        await browser.tabs.create({ url: "html/permissions.html" });
+                    }
+                });
+            }
+        }));
+    }
+}
+
+chrome.runtime.onInstalled.addListener(async (details) => {
+    onStartup();
+});
+
