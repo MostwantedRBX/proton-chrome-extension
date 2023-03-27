@@ -30,7 +30,6 @@ chrome.runtime.onMessage.addListener(
 function onStartup(){
     if (typeof browser !== 'undefined' && browser.runtime.getBrowserInfo) {
         if(browser.runtime.getBrowserInfo().then(async function(res){
-            console.log(res);
             if(res.name == "Firefox"){
                 browser.permissions.contains({origins: ['https://www.protondb.com/*', 'https://store.steampowered.com/*']}).then(async function(result) {
                     if(!result){
