@@ -11,7 +11,5 @@
     "content_scripts": {content_scripts},
     "browser_specific_settings": {
         "gecko": {firefox}
-    },"action": {
-        "default_popup": "html/permissions.html"
-      }
+    }
 }
