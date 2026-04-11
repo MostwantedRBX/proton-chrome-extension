@@ -54,7 +54,7 @@ Upon installing the addon, you'll see proton ratings:
 <tr>
 <td>Platinum</td>
 <td><img src="ss/platinum.png" height="30%"></td>
-<td>Silver</td>
+<td>Blue</td>
 </tr>
 
 <tr>
@@ -84,7 +84,7 @@ Upon installing the addon, you'll see proton ratings:
 <tr>
 <td>Pending</td>
 <td><img src="ss/pending.png" height="30%"></td>
-<td>Gray</td>
+<td>Salmon</td>
 </tr>
 </table>
 
