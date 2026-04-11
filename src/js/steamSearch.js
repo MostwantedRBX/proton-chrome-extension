@@ -24,6 +24,10 @@ function processResult(res){
     }
 
     var button = createProtonButton(rating, appId);
+    button.classList.add("proton_rating_search");
+    button.classList.add("col");
+    button.classList.add("response_secondrow");
+    button.firstChild.classList.add("proton_rating_link_search");
     addButtonToElement(button, targetElement, "responsive_search_name_combined");
 }
 
@@ -39,33 +43,6 @@ function getId(count) {
     return id;
 }
 
-
-// Shared Functions
-// Create a proton button based on a rating and appId
-function createProtonButton(rating, appId) {
-    //  Create a div.
-    var cont = document.createElement("div");
-    cont.className = "proton_rating_div proton_rating_search col responsive_secondrow proton_" + rating;
-
-    //  Create an anchor link, set the href to the protondb page, add it to the container div.
-    var pageLink = document.createElement("a");
-    pageLink.className = "proton_rating_link proton_rating_link_search";
-    var protonAppLink = "https://www.protondb.com/app/" + appId; // Link doesn't work in current result, as steam makes the entire row a link to the store-page
-    pageLink.href = protonAppLink;
-    pageLink.text = rating[0].toUpperCase() + rating.substring(1);
-    pageLink.target = "_blank";
-    cont.appendChild(pageLink);
-    return cont;
-
-}
-
-// Add the html button to a class
-function addButtonToElement(button, element, className) {
-    var parentElement = element.getElementsByClassName(className)[0];
-    if(parentElement){
-        parentElement.append(button);
-    }
-}
 
 // Events
 document.addEventListener('DOMNodeInserted', onPageChange);

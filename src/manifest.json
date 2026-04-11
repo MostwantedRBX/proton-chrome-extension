@@ -18,6 +18,7 @@
         "scripts": ["js/background.js"]
     },
     "content_scripts": [
+      
       {
         "matches": ["https://store.steampowered.com/app/*"],
         "js": ["js/steamStore.js"]
@@ -28,7 +29,7 @@
       },
       {
         "matches": ["https://store.steampowered.com/*"],
-        "js": ["js/steamGeneral.js"],
+        "js": ["js/steamGeneral.js", "js/utils.js", "js/deck.js", "js/proton.js"],
         "css": ["css/protondbCard.css", "css/variables.css"]
       }
     ],
