@@ -5,6 +5,14 @@ body{
    
 }
 
+body > h1{
+    margin-bottom: 0;
+}
+
+button{
+    cursor: pointer;
+}
+
 .options-section > h2{
     margin-bottom: 0;
 }
