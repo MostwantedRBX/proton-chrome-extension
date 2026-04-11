@@ -14,7 +14,26 @@ async function waitForLabel(label) {
     observeSearchResults(searchContents);
 }
 
+function loadAndApplyTheme() {
+    chrome.storage.sync.get(defaultOptions, (options) => {
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError);
+            applyTheme(defaultOptions);
+            return;
+        }
+
+        applyTheme(options);
+    });
+}
+
 async function onPageLoad() {
+    loadAndApplyTheme();
+    chrome.storage.onChanged.addListener((changes, areaName) => {
+        if (areaName === "sync") {
+            loadAndApplyTheme();
+        }
+    });
+
     const _ = await Promise.all([
         waitForLabel("Popular searches"),
         waitForLabel("Search results")
@@ -69,27 +88,34 @@ function onSteamItemLoaded(newItem) {
         return;
     processedAppIds.add(appid);
 
-
-    chrome.runtime.sendMessage(
-        {
-            contentScriptQuery: "queryProtonRating",
-            appID: appid
-        },
-        function (res) {
-            const rating = res[0];
-            const returnedId = res[1];
-
-            const cont = createProtonSearchbarRating(rating, returnedId);
-
-            const nameEl = newItem.lastChild;
-            if (nameEl) {
-                nameEl.firstChild.appendChild(cont);
-            }
-
+    chrome.storage.sync.get(defaultOptions, (options) => {
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError);
+            return;
         }
-    );
+
+        if (options.searchBarBadges) {
+            chrome.runtime.sendMessage(
+                {
+                    contentScriptQuery: "queryProtonRating",
+                    appID: appid
+                },
+                function (res) {
+                    const rating = res[0];
+                    const returnedId = res[1];
+
+                    const cont = createProtonSearchbarRating(rating, returnedId);
+
+                    const nameEl = newItem.lastChild;
+                    if (nameEl) {
+                        nameEl.firstChild.appendChild(cont);
+                    }
+
+                }
+            );
+        }
+    });
+
 }
-
-
 
 onPageLoad();

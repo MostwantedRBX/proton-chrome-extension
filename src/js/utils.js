@@ -24,6 +24,72 @@ function waitForElm(selector) {
     });
 }
 
+// Source - https://stackoverflow.com/a/175787
+// Posted by Dan, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-04-11, License - CC BY-SA 4.0
+function isNumeric(str) {
+  if (typeof str != "string") return false // we only process strings!  
+  return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+         !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+}
+
+
+function darkenHex(hex, percent) {
+    const clean = hex.replace("#", "");
+    const num = parseInt(clean, 16);
+
+    let r = (num >> 16) & 255;
+    let g = (num >> 8) & 255;
+    let b = num & 255;
+
+    r = Math.max(0, Math.floor(r * (1 - percent)));
+    g = Math.max(0, Math.floor(g * (1 - percent)));
+    b = Math.max(0, Math.floor(b * (1 - percent)));
+
+    return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+}
+
+function applyTheme(options) {
+    const root = document.documentElement;
+
+    root.style.setProperty("--proton_gold", options.protonGoldColor);
+    root.style.setProperty("--proton_platinum", options.protonPlatinumColor);
+    root.style.setProperty("--proton_silver", options.protonSilverColor);
+    root.style.setProperty("--proton_bronze", options.protonBronzeColor);
+    root.style.setProperty("--proton_borked", options.protonBorkedColor);
+    root.style.setProperty("--proton_pending", options.protonPendingColor);
+
+    root.style.setProperty("--deck_playable", options.deckPlayableColor);
+    root.style.setProperty("--deck_verified", options.deckVerifiedColor);
+    root.style.setProperty("--deck_unsupported", options.deckUnsupportedColor);
+    root.style.setProperty("--deck_unknown", options.deckUnknownColor);
+
+    const nativeDark = darkenHex(options.protonNativeColor, 0.25);
+    root.style.setProperty(
+        "--proton_native",
+        `linear-gradient(to right, ${options.protonNativeColor} 5%, ${nativeDark} 95%)`
+    );
+}
+const defaultOptions = {
+    searchPageBadges: true,
+    gamePageBadges: true,
+    searchBarBadges: true,
+    deckBadges: true,
+
+    protonNativeColor: "#75b022",
+    protonPlatinumColor: "#7bb1e8",
+    protonGoldColor: "#cfb53b",
+    protonSilverColor: "#c0c0c0",
+    protonBronzeColor: "#e78f36",
+    protonBorkedColor: "#cc0000",
+    protonPendingColor: "#ff9595",
+
+    deckPlayableColor: "#e78f36",
+    deckVerifiedColor: "#5fe736",
+    deckUnsupportedColor: "#cc0000",
+    deckUnknownColor: "#ff9595"
+};
+
 function waitForElementByText(selector, text) {
     return new Promise(resolve => {
         const find = () =>

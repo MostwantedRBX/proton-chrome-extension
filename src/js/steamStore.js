@@ -8,17 +8,39 @@ var tabs = document.getElementsByClassName("sysreq_tab");
 var isNative = checkNative(tabs);
 
 //  Send app id to the listener in background.js and callback the createProtonButton with the results
-chrome.runtime.sendMessage({
-    contentScriptQuery: "queryProtonRating",
-    appID: id
-},
-    generateProtonBadge
-);
+chrome.storage.sync.get(defaultOptions, (options) => {
+    if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError);
+        return;
+    }
 
-generateDeckBadge();
+    if (options.gamePageBadges) {
+        chrome.runtime.sendMessage({
+            contentScriptQuery: "queryProtonRating",
+            appID: id
+        },
+            generateProtonBadge
+        );
 
-//  If app is native, create a button for that too
-if (isNative) {
-    var nativeButton = createProtonButton("native");
-    addButtonToClass(nativeButton, "apphub_OtherSiteInfo");
-}
+        //  If app is native, create a button for that too
+        if (isNative) {
+            var nativeButton = createProtonButton("native");
+            addButtonToClass(nativeButton, "apphub_OtherSiteInfo");
+        }
+
+
+    }
+});
+
+chrome.storage.sync.get(defaultOptions, (options) => {
+    if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError);
+        return;
+    }
+
+    if (options.deckBadges) {
+        generateDeckBadge();
+
+    }
+});
+

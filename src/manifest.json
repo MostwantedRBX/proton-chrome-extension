@@ -1,42 +1,70 @@
 {
-    "manifest_version": 3,
-    "version": "1.6.4",
-    "name": "ProtonDB for Steam",
-    "description": "Adds the ProtonDB rating to games in the Steam store so you get an idea of how it will run before you buy it!",
-    "host_permissions": ["https://www.protondb.com/*"],
-    "icons": {
-      "16": "/icons/proton_16.png",
-      "32": "/icons/proton_32.png",
-      "48": "/icons/proton_48.png",
-      "128": "/icons/proton_128.png"
+  "manifest_version": 3,
+  "version": "1.6.4",
+  "name": "ProtonDB for Steam",
+  "description": "Adds the ProtonDB rating to games in the Steam store so you get an idea of how it will run before you buy it!",
+  "host_permissions": [
+    "https://www.protondb.com/*"
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "16": "/icons/proton_16.png",
+    "32": "/icons/proton_32.png",
+    "48": "/icons/proton_48.png",
+    "128": "/icons/proton_128.png"
+  },
+  "action": {
+    "default_popup": "html/options.html"
+  },
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "js/background.js",
+    "scripts": [
+      "js/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://store.steampowered.com/*"
+      ],
+      "js": [
+        "js/utils.js",
+        "js/deck.js",
+        "js/proton.js",
+        "js/steamGeneral.js"
+      ],
+      "css": [
+        "css/protondbCard.css",
+        "css/variables.css"
+      ]
     },
-    "action": {
-      "default_popup": "html/options.html"
+    {
+      "matches": [
+        "https://store.steampowered.com/app/*"
+      ],
+      "js": [
+        "js/steamStore.js"
+      ]
     },
-     "background": {
-        "service_worker": "js/background.js",
-        "scripts": ["js/background.js"]
-    },
-    "content_scripts": [
-      {
-        "matches": ["https://store.steampowered.com/*"],
-        "js": ["js/utils.js", "js/deck.js", "js/proton.js", "js/steamGeneral.js"],
-        "css": ["css/protondbCard.css", "css/variables.css"]
-      },
-      {
-        "matches": ["https://store.steampowered.com/app/*"],
-        "js": ["js/steamStore.js"]
-      },
-      {
-        "matches": ["https://store.steampowered.com/search*"],
-        "js": ["js/steamSearch.js"]
-      }
-    ],
-     "browser_specific_settings": {
-        "gecko": {
-            "id": "{09d1226f-0dd0-4ad7-8a0f-cca316ea271e}",
-            "strict_min_version": "101.0"
-        }
+    {
+      "matches": [
+        "https://store.steampowered.com/search*"
+      ],
+      "js": [
+        "js/steamSearch.js"
+      ]
     }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{09d1226f-0dd0-4ad7-8a0f-cca316ea271e}",
+      "strict_min_version": "101.0"
+    }
+  }
 }
-  

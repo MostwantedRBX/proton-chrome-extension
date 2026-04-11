@@ -4,3 +4,32 @@ body{
     color: #bcbcbc;
    
 }
+
+.options-section > h2{
+    margin-bottom: 0;
+}
+.options-section > hr{
+    width: 80%;
+    float: left;
+    margin-right: 20%;
+}
+
+
+.options-list{
+    display: flex;
+    flex-direction: column;
+    padding: 0 .5rem;
+    gap: 1rem;
+}
+
+.option-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.options-label{
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
