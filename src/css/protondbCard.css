@@ -125,6 +125,44 @@
     line-height: 45px;
 }
 
+/* Deck */
+
+.deck_playable {
+    background: var(--deck_playable);
+    transition: 0.1s;
+}
+
+.deck_playable:hover {
+    filter: brightness(110%);
+}
+
+.deck_verified {
+    background: var(--deck_verified);
+    transition: 0.1s;
+}
+
+.deck_verified:hover {
+    filter: brightness(110%);
+}
+
+.deck_unsupported {
+    background: var(--deck_unsupported);
+    transition: 0.1s;
+}
+
+.deck_unsupported:hover {
+    filter: brightness(110%);
+}
+
+.deck_unknown {
+    background: var(--deck_unknown);
+    transition: 0.1s;
+}
+
+.deck_unknown:hover {
+    filter: brightness(110%);
+}
+
 /* Search bar */
 .search_bar_proton_badge{
     font-size: 12px;

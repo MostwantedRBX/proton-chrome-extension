@@ -12,11 +12,11 @@ function onPageChange(event) {
     if (event.srcElement.classList[0] == "match") {
         var newItem = event.srcElement;
         var id = newItem.dataset.dsAppid;
-            chrome.runtime.sendMessage({
-                contentScriptQuery: "queryProtonRating",
-                appID: id
-            },
-            function(res){
+        chrome.runtime.sendMessage({
+            contentScriptQuery: "queryProtonRating",
+            appID: id
+        },
+            function (res) {
                 var rating = res[0];
                 var id = res[1];
                 var cont = document.createElement("div");
@@ -37,5 +37,5 @@ function onPageChange(event) {
             }
         );
     }
-  
+
 };
