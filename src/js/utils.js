@@ -24,6 +24,32 @@ function waitForElm(selector) {
     });
 }
 
+function waitForElementByText(selector, text) {
+    return new Promise(resolve => {
+        const find = () =>
+            [...document.querySelectorAll(selector)]
+                .find(el => el.textContent.trim() === text);
+
+        const existing = find();
+        if (existing) {
+            resolve(existing);
+            return;
+        }
+
+        const observer = new MutationObserver(() => {
+            const el = find();
+            if (el) {
+                observer.disconnect();
+                resolve(el);
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
 
 function addButtonToClass(button, className) {
     //  Get the "Community Hub" button on the steam page and append the new div to the parent of the button.

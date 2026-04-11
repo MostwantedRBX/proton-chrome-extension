@@ -18,7 +18,11 @@
         "scripts": ["js/background.js"]
     },
     "content_scripts": [
-      
+      {
+        "matches": ["https://store.steampowered.com/*"],
+        "js": ["js/utils.js", "js/deck.js", "js/proton.js", "js/steamGeneral.js"],
+        "css": ["css/protondbCard.css", "css/variables.css"]
+      },
       {
         "matches": ["https://store.steampowered.com/app/*"],
         "js": ["js/steamStore.js"]
@@ -26,11 +30,6 @@
       {
         "matches": ["https://store.steampowered.com/search*"],
         "js": ["js/steamSearch.js"]
-      },
-      {
-        "matches": ["https://store.steampowered.com/*"],
-        "js": ["js/steamGeneral.js", "js/utils.js", "js/deck.js", "js/proton.js"],
-        "css": ["css/protondbCard.css", "css/variables.css"]
       }
     ],
      "browser_specific_settings": {
