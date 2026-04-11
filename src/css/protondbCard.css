@@ -89,12 +89,12 @@
 }
 
 .proton_rating_search {
-    float: right !important;
-    right: 0;
+    float: left !important;
+    left: 0;
     top: 0;
     padding: 0px 0.15rem !important;
     margin: 0 !important;
-    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
     position: absolute;
     -webkit-transition: width 0.2s ease-in-out;
     -moz-transition: width 0.2s ease-in-out;
@@ -104,6 +104,8 @@
     width: 0rem !important;
     text-align: center;
     text-indent: 100rem !important;
+    height: 100%;
+    z-index: 1600 !important;   
 }
 
 .proton_rating_search:hover {
