@@ -1,6 +1,6 @@
 "use strict";
 
-var id = window.location.href.slice(35).split("/")[0];
+var id = window.location.href.split("/app/")[1].split("/")[0];
 var protonAppLink = "https://www.protondb.com/app/" + id;
 
 // Check if the app runs natively

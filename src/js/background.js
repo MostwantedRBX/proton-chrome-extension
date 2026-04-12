@@ -3,9 +3,6 @@
 chrome.runtime.onMessage.addListener(
     function (req, from, sendRes) {
         if (req.contentScriptQuery == "queryProtonRating") {
-            if(!isNumeric(req.appID)){
-                return false;
-            }
             //    link to game ratings on proton
             var href = "https://www.protondb.com/api/v1/reports/summaries/" + req.appID + ".json";
 

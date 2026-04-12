@@ -78,11 +78,8 @@ function onSteamItemLoaded(newItem) {
     const href = newItem.getAttribute("href");
     if (!href?.includes("/app/")) return;
 
-    var link = href.replace("https://store.steampowered.com/app/", "");
-    var end = link.indexOf('/');
-    if (end == -1) return;
 
-    const appid = link.substring(0, end);
+    const appid = href.split("/app/")[1].split("/")[0];
 
     if (processedAppIds.has(appid))
         return;
