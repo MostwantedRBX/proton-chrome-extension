@@ -25,6 +25,7 @@
   "background": {
     "service_worker": "js/background.js",
     "scripts": [
+      "js/utils.js",
       "js/background.js"
     ]
   },
