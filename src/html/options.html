@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/css/options.css">
+    <meta charset="UTF-8">
+    <title>ProtonDB For Steam - Options</title>
+</head>
+
+<body>
+    <h1>ProtonDB For Steam</h1>
+    <sub id="credits">Made with ❤️ by <a target="_blank" href="https://github.com/MostwantedRbx">MostwantedRbx</a> and <a
+            target="_blank" href="https://github.com/Vvamp">Vvamp</a></sub>
+    <form id="options-form">
+        <p id="status"></p>
+        <button type="button" id="open-full-settings">Open settings in new tab</button>
+        <section class="options-section">
+            <h2>Badge Visibility</h2>
+            <hr />
+
+            <div class="options-list">
+                <label class="option-row" for="search-page-badges">
+                    <span class="options-label">
+                        <strong>Search page badges</strong>
+                        <small>Show badges in Steam search results pages.</small>
+                    </span>
+                    <input type="checkbox" id="search-page-badges" name="searchPageBadges">
+                </label>
+
+                <label class="option-row" for="game-page-badges">
+                    <span class="options-label">
+                        <strong>Game page badges</strong>
+                        <small>Show badges in Steam game page.</small>
+                    </span>
+                    <input type="checkbox" id="game-page-badges" name="gamePageBadges">
+                </label>
+
+                <label class="option-row" for="search-bar-badges">
+                    <span class="options-label">
+                        <strong>Search bar badges</strong>
+                        <small>Show badges in Steam search bar results.</small>
+                    </span>
+                    <input type="checkbox" id="search-bar-badges" name="searchBarBadges">
+                </label>
+
+                <label class="option-row" for="deck-badges">
+                    <span class="options-label">
+                        <strong>Steam deck badges</strong>
+                        <small>Show steam deck verified badges on the game store page.</small>
+                    </span>
+                    <input type="checkbox" id="deck-badges" name="deckBadges">
+                </label>
+            </div>
+        </section>
+
+        <section class="options-section">
+            <h2>Color Customization</h2>
+            <hr />
+
+            <div class="options-list">
+                <label class="option-row" for="color-proton-native">
+                    <span class="options-label">
+                        <strong>Proton 'native' badge color</strong>
+                        <small>The color for the 'native' proton badge</small>
+                    </span>
+                    <input type="color" id="color-proton-native" name="protonNativeColor">
+                </label>
+
+                <label class="option-row" for="color-proton-platinum">
+                    <span class="options-label">
+                        <strong>Proton 'platinum' badge color</strong>
+                        <small>The color for the 'platinum' proton badge</small>
+                    </span>
+                    <input type="color" id="color-proton-platinum" name="protonPlatinumColor">
+                </label>
+
+                <label class="option-row" for="color-proton-gold">
+                    <span class="options-label">
+                        <strong>Proton 'gold' badge color</strong>
+                        <small>The color for the 'gold' proton badge</small>
+                    </span>
+                    <input type="color" id="color-proton-gold" name="protonGoldColor">
+                </label>
+
+                <label class="option-row" for="color-proton-silver">
+                    <span class="options-label">
+                        <strong>Proton 'silver' badge color</strong>
+                        <small>The color for the 'silver' proton badge</small>
+                    </span>
+                    <input type="color" id="color-proton-silver" name="protonSilverColor">
+                </label>
+
+                <label class="option-row" for="color-proton-bronze">
+                    <span class="options-label">
+                        <strong>Proton 'bronze' badge color</strong>
+                        <small>The color for the 'bronze' proton badge</small>
+                    </span>
+                    <input type="color" id="color-proton-bronze" name="protonBronzeColor">
+                </label>
+
+                <label class="option-row" for="color-proton-borked">
+                    <span class="options-label">
+                        <strong>Proton 'borked' badge color</strong>
+                        <small>The color for the 'borked' proton badge</small>
+                    </span>
+                    <input type="color" id="color-proton-borked" name="protonBorkedColor">
+                </label>
+
+                <label class="option-row" for="color-proton-pending">
+                    <span class="options-label">
+                        <strong>Proton 'pending' badge color</strong>
+                        <small>The color for the 'pending' proton badge</small>
+                    </span>
+                    <input type="color" id="color-proton-pending" name="protonPendingColor">
+                </label>
+
+                <label class="option-row" for="color-deck-verified">
+                    <span class="options-label">
+                        <strong>Deck 'verified' badge color</strong>
+                        <small>The color for the 'verified' steam deck badge</small>
+                    </span>
+                    <input type="color" id="color-deck-verified" name="deckVerifiedColor">
+                </label>
+
+                <label class="option-row" for="color-deck-playable">
+                    <span class="options-label">
+                        <strong>Deck 'playable' badge color</strong>
+                        <small>The color for the 'playable' steam deck badge</small>
+                    </span>
+                    <input type="color" id="color-deck-playable" name="deckPlayableColor">
+                </label>
+
+                <label class="option-row" for="color-deck-unsupported">
+                    <span class="options-label">
+                        <strong>Deck 'unsupported' badge color</strong>
+                        <small>The color for the 'unsupported' steam deck badge</small>
+                    </span>
+                    <input type="color" id="color-deck-unsupported" name="deckUnsupportedColor">
+                </label>
+
+                <label class="option-row" for="color-deck-unknown">
+                    <span class="options-label">
+                        <strong>Deck 'unknown' badge color</strong>
+                        <small>The color for the 'unknown' steam deck badge</small>
+                    </span>
+                    <input type="color" id="color-deck-unknown" name="deckUnknownColor">
+                </label>
+
+            </div>
+        </section>
+
+    </form>
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/options.js"></script>
+</body>
+
+</html>

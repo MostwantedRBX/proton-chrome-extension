@@ -1,38 +1,75 @@
 "use strict";
 
 chrome.runtime.onMessage.addListener(
-  function(req, from, sendRes) {
-      if (req.contentScriptQuery == "queryProtonRating") {
-          //    link to game ratings on proton
-          var href = "https://www.protondb.com/api/v1/reports/summaries/" + req.appID + ".json";
-          
-          //    Fetch the body from the appid's protondb page then if response if 404, that means its not been reviewed enough then return the rating field in the json
-          fetch(href)
-              .then(res => {
-                  if (!res.ok) {
-                      if (res.status == 404) {
-                          sendRes(["pending", req.appID]);
-                          return true;
-                      }
-                      throw Error(res.status);
-                  }
-                  return res.json();
-              })
-              .then(data => {sendRes([data.tier, req.appID]);}).catch(error => console.log(error))
+    function (req, from, sendRes) {
+        if (req.contentScriptQuery == "queryProtonRating") {
+            //    link to game ratings on proton
+            var href = "https://www.protondb.com/api/v1/reports/summaries/" + req.appID + ".json";
 
-          return true;
-      }
-  }
+            //    Fetch the body from the appid's protondb page then if response if 404, that means its not been reviewed enough then return the rating field in the json
+            fetch(href)
+                .then(res => {
+                    if (!res.ok) {
+                        if (res.status == 404) {
+                            sendRes(["pending", req.appID]);
+                            return true;
+                        }
+                        throw Error(res.status);
+                    }
+                    return res.json();
+                })
+                .then(data => { sendRes([data.tier, req.appID]); }).catch(error => console.log(error))
+
+            return true;
+        } else if (req.contentScriptQuery == "queryDeckRating") {
+            var href = "https://www.protondb.com/proxy/steam/deck-verified?nAppID=" + req.appID;
+            fetch(href)
+                .then(res => {
+                    if (!res.ok) {
+                        if (res.status == 404) {
+                            sendRes(["unknown"], req.appID);
+                            return true;
+                        }
+                        throw Error(res.status);
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    if(data.success != 1 || data.results == {}){
+                        sendRes(["unknown"], req.appID);
+                    }else{
+                        var res = "unknown";
+                        switch(data.results.resolved_category){
+                            case 1:
+                                res = "unsupported";
+                                break;
+                            case 2:
+                                res = "playable";
+                                break;
+                            case 3:
+                                res = "verified";
+                                break;
+                            default:
+                                res = "unkown";
+                                break;
+                        }
+                        sendRes([res, req.appID]);
+                    }
+                }).catch(error => console.log(error))
+
+            return true;
+        }
+    }
 );
 /// This function checks if the current browser is firefox and if so, opens a special permissions tab requesting permissions.
 /// Firefox has stopped supporting 'required' permissions since v3 and is real picky with asking the user about those permissions.
 /// This opens a page explaining the permissions and asking for a button click
-function onStartup(){
+function onStartup() {
     if (typeof browser !== 'undefined' && browser.runtime.getBrowserInfo) {
-        if(browser.runtime.getBrowserInfo().then(async function(res){
-            if(res.name == "Firefox"){
-                browser.permissions.contains({origins: ['https://www.protondb.com/*', 'https://store.steampowered.com/*']}).then(async function(result) {
-                    if(!result){
+        if (browser.runtime.getBrowserInfo().then(async function (res) {
+            if (res.name == "Firefox") {
+                browser.permissions.contains({ origins: ['https://www.protondb.com/*', 'https://store.steampowered.com/*'] }).then(async function (result) {
+                    if (!result) {
                         await browser.tabs.create({ url: "html/permissions.html" });
                     }
                 });
